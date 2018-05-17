@@ -2289,18 +2289,18 @@ def normalize_string_quotes(leaf: Leaf) -> None:
     Note: Mutates its argument.
     """
     value = leaf.value.lstrip("furbFURB")
-    if value[:3] == '"""':
+    if value[:3] == "'''":
         return
 
-    elif value[:3] == "'''":
-        orig_quote = "'''"
-        new_quote = '"""'
+    elif value[:3] == '"""':
+        orig_quote = '"""'
+        new_quote = "'''"
     elif value[0] == '"':
         orig_quote = '"'
         new_quote = "'"
     else:
-        orig_quote = "'"
-        new_quote = '"'
+        orig_quote = '"'
+        new_quote = "'"
     first_quote_pos = leaf.value.find(orig_quote)
     if first_quote_pos == -1:
         return  # There's an internal error
